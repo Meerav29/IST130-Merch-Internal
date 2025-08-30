@@ -1,0 +1,74 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "customer_name": {
+      "type": "string",
+      "description": "Name of team member placing order"
+    },
+    "customer_email": {
+      "type": "string",
+      "description": "Email of team member"
+    },
+    "items": {
+      "type": "array",
+      "description": "Array of ordered items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "sizes": {
+            "type": "array",
+            "description": "Array of sizes for each unit of the item",
+            "items": {
+              "type": "string"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "number",
+      "description": "Total before setup fee"
+    },
+    "setup_fee": {
+      "type": "number",
+      "description": "Screen setup fee",
+      "default": 1.25
+    },
+    "total_amount": {
+      "type": "number",
+      "description": "Final total including setup fee"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "completed"
+      ],
+      "default": "pending"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Any additional notes from customer"
+    }
+  },
+  "required": [
+    "customer_name",
+    "customer_email",
+    "items",
+    "total_amount"
+  ]
+}
